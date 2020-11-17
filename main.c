@@ -406,10 +406,12 @@
 
   if (PartFound == PART_CAPACITOR) {
 #if FLASHEND > 0x3fff
+ #ifndef WITH_MENU
      if ((cap.ca + cap.cb) == (TP1 + TP3)) {
         show_Cap13();		// repeated capacity measurement
         goto shut_off;		// key was pressed or timeout
      }
+ #endif
      show_cap(0);		// show capacity in normal way and measure additional parameters
 #else
      show_cap_simple();		// show capacity in normal way and measure additional parameters
